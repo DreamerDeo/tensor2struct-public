@@ -1,9 +1,9 @@
-local _data_path = 'data/spider/';
+local _data_path = 'raw/spider/';
 local spider_base = import "spider_base_0512.libsonnet";
 
 function(args, data_path=_data_path) spider_base(args, data_path=_data_path) {
     data: {
-        local PREFIX = data_path + "raw/",
+        local PREFIX = data_path,
         local ts = if $.args.use_other_train then
             ['spider', 'others']
         else
@@ -11,9 +11,7 @@ function(args, data_path=_data_path) spider_base(args, data_path=_data_path) {
 
         train: {
             name: 'spider', 
-            paths: [
-              PREFIX + 'train_%s.json' % [s]
-              for s in ts],
+            paths: [PREFIX + 'dev.json'],
             tables_paths: [
               PREFIX + 'tables.json',
             ],

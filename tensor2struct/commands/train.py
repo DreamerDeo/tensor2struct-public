@@ -167,9 +167,9 @@ class Trainer:
             if last_step % self.train_config.report_every_n == 0:
                 self.logger.info("Step {}: loss={:.4f}".format(last_step, loss.item()))
                 self.logger.info(f"Step {last_step}, lr={new_lr}")
-                wandb.log({"train_loss": loss.item()}, step=last_step)
-                for i in range(len(new_lr)):
-                    wandb.log({f"lr_{i}": new_lr[i]}, step=last_step)
+                # wandb.log({"train_loss": loss.item()}, step=last_step)
+                # for i in range(len(new_lr)):
+                #     wandb.log({f"lr_{i}": new_lr[i]}, step=last_step)
 
     def save_state(self, saver, modeldir, last_step):
         if (
@@ -250,9 +250,9 @@ class Trainer:
                 ", ".join("{} = {}".format(k, v) for k, v in stats.items()),
             )
         )
-        wandb.log(
-            {f"{eval_section}_eval_{k}": v for k, v in stats.items()}, step=last_step
-        )
+        # wandb.log(
+        #     {f"{eval_section}_eval_{k}": v for k, v in stats.items()}, step=last_step
+        # )
 
 
 def add_parser():
@@ -302,7 +302,7 @@ def setup(args):
         json.dump(config, f, sort_keys=True, indent=4)
 
     # save to wandb
-    wandb.config.update(config)
+    # wandb.config.update(config)
     return config, logger
 
 

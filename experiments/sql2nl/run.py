@@ -73,8 +73,8 @@ def main():
     project = exp_config["project"]
 
     # dist train need to start a wandb session in each process, not a global one
-    if args.mode not in ["dist_train"]:
-        wandb.init(project=project, group=expname, job_type=args.mode)
+    # if args.mode not in ["dist_train"]:
+    #     wandb.init(project=project, group=expname, job_type=args.mode)
 
     if args.mode == "train":
         train_config = TrainConfig(model_config_file, model_config_args, logdir)

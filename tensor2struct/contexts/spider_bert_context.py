@@ -174,12 +174,13 @@ class SpiderBertContext(SpiderContext):
                     word = sp_token.text  # use verbatim for value matching
                     # word = sp_token.lemma_
 
-                    try:
-                        ret = self.db_word_match(
-                            word, column.orig_name, column.table.orig_name, db_path
-                        )
-                    except timeout_decorator.TimeoutError as e:
-                        ret = False
+                    # try:
+                    #     ret = self.db_word_match(
+                    #         word, column.orig_name, column.table.orig_name, db_path
+                    #     )
+                    # except timeout_decorator.TimeoutError as e:
+                    #     ret = False
+                    ret=False
 
                     if ret:
                         relations["q-col:CELLMATCH"].append((q_id, col_id))

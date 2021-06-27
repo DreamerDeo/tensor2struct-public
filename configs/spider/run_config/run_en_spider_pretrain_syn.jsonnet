@@ -6,7 +6,7 @@
     model_config_args: {
         # data 
         use_other_train: true,
-        local syn_ratio = 6,
+        local syn_ratio = 3,
         local syn_max_ac = 128,
         syn_data_version: "r%s-m%s" %[syn_ratio, syn_max_ac],
         syn_data_path: "experiments/sql2nl/data-spider-with-ssp-synthetic/new-examples-%s-%s.json" %[syn_ratio, syn_max_ac],
